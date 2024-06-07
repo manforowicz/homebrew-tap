@@ -1,21 +1,21 @@
 class Gday < Formula
-  desc "Command line tool to send files easily, securely, and directly, without a relay or port forwarding."
+  desc "Command line tool to send files directly and securely, without a relay or port forwarding."
   homepage "https://github.com/manforowicz/gday/gday/"
   version "0.1.1"
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/manforowicz/gday/releases/download/v0.1.1/gday-aarch64-apple-darwin.tar.xz"
-      sha256 "57f91bd71e97c8dfedcdccbf2d960dbc9adc0918dc0cee73bc178093ed085433"
+      sha256 "4ab0aea6b538fcbcc8ed2f6a149080997a80082fe9a7b1cd970df993d91ced38"
     end
     if Hardware::CPU.intel?
       url "https://github.com/manforowicz/gday/releases/download/v0.1.1/gday-x86_64-apple-darwin.tar.xz"
-      sha256 "e73b1a3506bfdb5d6a943c1630b38e7add4b004b5e037b7f52bb54717bce4bcc"
+      sha256 "3866c777f2f19ab7f56777c1435c10f618d624d86980c523d16fea00069b5d00"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
       url "https://github.com/manforowicz/gday/releases/download/v0.1.1/gday-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "fc11fd4535f2c08f73a2505620fc3432256c9a275e4dd76e3fe30ef2fb575e6d"
+      sha256 "fa959e13f4d13ea23bb138055b59e16f40894bc8828ea1beff2aefb1e1eff072"
     end
   end
   license "MIT"
