@@ -1,21 +1,21 @@
 class GdayServer < Formula
-  desc "A server that lets 2 peers exchange their private and public addresses via the gday contact exchange protocol."
+  desc "Server that lets 2 peers exchange their socket addresses."
   homepage "https://github.com/manforowicz/gday/gday_server/"
   version "0.1.1"
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/manforowicz/gday/releases/download/v0.1.1/gday_server-aarch64-apple-darwin.tar.xz"
-      sha256 "469b75fd36e214ce8ba549f049498ea496d22944b1623e3db192aada6fdb34d2"
+      sha256 "3ce434116d5b36fa3c1353bb9a058343a219802c39811397f301459093f9e3b2"
     end
     if Hardware::CPU.intel?
       url "https://github.com/manforowicz/gday/releases/download/v0.1.1/gday_server-x86_64-apple-darwin.tar.xz"
-      sha256 "aa2dbe57a947f082116ae6825fe84e396b1e0d11bf7f22da9b8e75428f2e02ab"
+      sha256 "ced1d189422c4b3d22fcfe3e44a18fb47991b894766cc506c4c7fc0e18c67bf1"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
       url "https://github.com/manforowicz/gday/releases/download/v0.1.1/gday_server-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "a21aa9953c81e37da63d945ff0c3ca50c6095f3e6e17fc45789e93c5a0632d7b"
+      sha256 "6eef5cea9fda6abf5bb01b5c62ea75879253cb3c274c5e76fa917a425659d9d5"
     end
   end
   license "MIT"
