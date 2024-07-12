@@ -1,21 +1,21 @@
 class GdayServer < Formula
   desc "Server that lets 2 peers exchange their socket addresses."
   homepage "https://github.com/manforowicz/gday/tree/main/gday_server"
-  version "0.2.0"
+  version "0.2.1"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.0/gday_server-aarch64-apple-darwin.tar.gz"
-      sha256 "618a1866e34e8339db1fd36ddbee677b2492e9f57a95f6740800d7a80decb2b2"
+      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday_server-aarch64-apple-darwin.tar.gz"
+      sha256 "86376b1acc94ccea30d6b38963e8759702ccec31c00774cb5bc057451b3731f1"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.0/gday_server-x86_64-apple-darwin.tar.gz"
-      sha256 "7c3009bbeca5206c97f9884137661a4efbf767d1f01967ee2c62a4a335d19ab1"
+      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday_server-x86_64-apple-darwin.tar.gz"
+      sha256 "533af40d8f9bde479d88537d4035a180c48892c6799005e2252e327f0770f70c"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.0/gday_server-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "8240201ed17fd41f5ca07fec421c16cbbf5e20d85d0e43b7c9a50d241c11416d"
+      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday_server-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "eaf45a54b7f4097a378333e8ff3db42e4f6c28bb4758d5c22c0a6070397d3e83"
     end
   end
   license "MIT"
