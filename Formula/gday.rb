@@ -1,21 +1,21 @@
 class Gday < Formula
   desc "Command line tool to securely send files (without a relay or port forwarding)."
   homepage "https://github.com/manforowicz/gday/tree/main/gday"
-  version "0.2.0"
+  version "0.2.1"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.0/gday-aarch64-apple-darwin.tar.gz"
-      sha256 "da8ae9e75da1161607c8a37bad124e98d4bee7cc1767f75888c721901a06f3d9"
+      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday-aarch64-apple-darwin.tar.gz"
+      sha256 "25af9b5df32d17eb5c48dc033d05b8c073c12fbd27d10dc7dbae3a79287f2708"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.0/gday-x86_64-apple-darwin.tar.gz"
-      sha256 "9d2f72e79beac772bbb678d61176bc94326cceb19b5e97056816912b7e92ecad"
+      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday-x86_64-apple-darwin.tar.gz"
+      sha256 "ced2d1471cf520bd861b262991d54a373685a1df8063482100ec73ce67c5b6dd"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.0/gday-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "58148bfb8a292c414091024d1bf908021b8a6447d10bbadb9f481dca0e0f7ef4"
+      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "691e67626fec65fab750ca8614d01057534e40a035b7c9e7ff0a8885b237d6c4"
     end
   end
   license "MIT"
