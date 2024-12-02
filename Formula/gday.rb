@@ -1,26 +1,29 @@
 class Gday < Formula
   desc "Command line tool to securely send files (without a relay or port forwarding)."
   homepage "https://github.com/manforowicz/gday/tree/main/gday"
-  version "0.2.1"
+  version "0.3.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday-aarch64-apple-darwin.tar.gz"
-      sha256 "25af9b5df32d17eb5c48dc033d05b8c073c12fbd27d10dc7dbae3a79287f2708"
+      url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday-aarch64-apple-darwin.tar.gz"
+      sha256 "a76cb13058702cf3dfbfba84f581bd0a53e476e3ea8c1d0236c98822ca0275c1"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday-x86_64-apple-darwin.tar.gz"
-      sha256 "ced2d1471cf520bd861b262991d54a373685a1df8063482100ec73ce67c5b6dd"
+      url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday-x86_64-apple-darwin.tar.gz"
+      sha256 "c50a2f7329988e5dcfb1cf9b74169ec43f5f497d6d223cf992632350683c7d70"
     end
   end
-  if OS.linux?
-    if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.2.1/gday-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "691e67626fec65fab750ca8614d01057534e40a035b7c9e7ff0a8885b237d6c4"
-    end
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "68b426f8e40868c4fd8222c39f076b9819d20d28063201878830330ce0dcefd6"
   end
   license "MIT"
 
-  BINARY_ALIASES = {"aarch64-apple-darwin": {}, "x86_64-apple-darwin": {}, "x86_64-pc-windows-gnu": {}, "x86_64-unknown-linux-gnu": {}}
+  BINARY_ALIASES = {
+    "aarch64-apple-darwin":     {},
+    "x86_64-apple-darwin":      {},
+    "x86_64-pc-windows-gnu":    {},
+    "x86_64-unknown-linux-gnu": {},
+  }.freeze
 
   def target_triple
     cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
@@ -38,15 +41,9 @@ class Gday < Formula
   end
 
   def install
-    if OS.mac? && Hardware::CPU.arm?
-      bin.install "gday"
-    end
-    if OS.mac? && Hardware::CPU.intel?
-      bin.install "gday"
-    end
-    if OS.linux? && Hardware::CPU.intel?
-      bin.install "gday"
-    end
+    bin.install "gday" if OS.mac? && Hardware::CPU.arm?
+    bin.install "gday" if OS.mac? && Hardware::CPU.intel?
+    bin.install "gday" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
 
