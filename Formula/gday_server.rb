@@ -1,28 +1,35 @@
 class GdayServer < Formula
   desc "Server that lets 2 peers exchange their socket addresses."
-  homepage "https://github.com/manforowicz/gday/tree/main/gday_server"
-  version "0.3.0"
+  homepage "https://github.com/manforowicz/gday/"
+  version "0.4.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday_server-aarch64-apple-darwin.tar.gz"
-      sha256 "527df5ac7ffbaf71e13bfca2c85e4214ef81e9d8b3aa28593000990a609ced2f"
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday_server-aarch64-apple-darwin.tar.gz"
+      sha256 "e056e3bc44c8e890fd34e0925fdcd66da014bc359153ff2e8a5fc1ba4b69e0b7"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday_server-x86_64-apple-darwin.tar.gz"
-      sha256 "9f5202e77e203b40cbf6091f7822702b3ad70c28b8f8c40f187e6f1afb47a0cb"
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday_server-x86_64-apple-darwin.tar.gz"
+      sha256 "5549e13388225151a88fd6c30bc03d366a7884b765c2c3babf8c63f1052a367a"
     end
   end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday_server-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "eef9fec1d1b62d239042b74a7b3a130373a4a65432da98034ab8b5e3e40d0ea1"
+  if OS.linux?
+    if Hardware::CPU.arm?
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday_server-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "0200e1208b0ecafc277a1740a0e3fe1d89cd218719eccd21fbac1dc1c82c59b4"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday_server-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "3509adedcf5f467dc84387bb2115987a5b5fb10f0c53e42c38aed7114af8a65e"
+    end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":     {},
-    "x86_64-apple-darwin":      {},
-    "x86_64-pc-windows-gnu":    {},
-    "x86_64-unknown-linux-gnu": {},
+    "aarch64-apple-darwin":      {},
+    "aarch64-unknown-linux-gnu": {},
+    "x86_64-apple-darwin":       {},
+    "x86_64-pc-windows-gnu":     {},
+    "x86_64-unknown-linux-gnu":  {},
   }.freeze
 
   def target_triple
@@ -43,6 +50,7 @@ class GdayServer < Formula
   def install
     bin.install "gday_server" if OS.mac? && Hardware::CPU.arm?
     bin.install "gday_server" if OS.mac? && Hardware::CPU.intel?
+    bin.install "gday_server" if OS.linux? && Hardware::CPU.arm?
     bin.install "gday_server" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
