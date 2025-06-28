@@ -1,28 +1,35 @@
 class Gday < Formula
   desc "Command line tool to securely send files (without a relay or port forwarding)."
-  homepage "https://github.com/manforowicz/gday/tree/main/gday"
-  version "0.3.0"
+  homepage "https://github.com/manforowicz/gday/"
+  version "0.4.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday-aarch64-apple-darwin.tar.gz"
-      sha256 "a76cb13058702cf3dfbfba84f581bd0a53e476e3ea8c1d0236c98822ca0275c1"
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday-aarch64-apple-darwin.tar.gz"
+      sha256 "2f6b40127914292839c6bb0f3b4d5dd7536af27b5beaa2de8f41444ed0059a86"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday-x86_64-apple-darwin.tar.gz"
-      sha256 "c50a2f7329988e5dcfb1cf9b74169ec43f5f497d6d223cf992632350683c7d70"
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday-x86_64-apple-darwin.tar.gz"
+      sha256 "81cffb16c97d6183ce4504945be56f73f83f34e8f59b98eba0b4338deb04c955"
     end
   end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/manforowicz/gday/releases/download/v0.3.0/gday-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "68b426f8e40868c4fd8222c39f076b9819d20d28063201878830330ce0dcefd6"
+  if OS.linux?
+    if Hardware::CPU.arm?
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "4713b317200232ec39610c0aead2332344b696d6aa32296581f2a30d830db498"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/manforowicz/gday/releases/download/v0.4.0/gday-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "f1f36c68e22595fdc98125336fb1301cf1cc4796fc5c22261d5da34f4cc64e87"
+    end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":     {},
-    "x86_64-apple-darwin":      {},
-    "x86_64-pc-windows-gnu":    {},
-    "x86_64-unknown-linux-gnu": {},
+    "aarch64-apple-darwin":      {},
+    "aarch64-unknown-linux-gnu": {},
+    "x86_64-apple-darwin":       {},
+    "x86_64-pc-windows-gnu":     {},
+    "x86_64-unknown-linux-gnu":  {},
   }.freeze
 
   def target_triple
@@ -43,6 +50,7 @@ class Gday < Formula
   def install
     bin.install "gday" if OS.mac? && Hardware::CPU.arm?
     bin.install "gday" if OS.mac? && Hardware::CPU.intel?
+    bin.install "gday" if OS.linux? && Hardware::CPU.arm?
     bin.install "gday" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
